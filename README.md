@@ -25,7 +25,7 @@ You can also add other php versions that are needed, follow the steps below.
 1. Download php from https://windows.php.net/downloads/releases/archives/
 2. Extract on Apache/php/
 3. Edit httpd.conf in last line add ScriptAlias like this :
-      #BEGIN RUNNING MULTIPLE PHP 
+      
        ScriptAlias /php7.4.9 "${SRVROOT}/php/php7.4.9"
        <Directory "${SRVROOT}/php/php7.4.9">
          Options +Indexes +Includes +FollowSymLinks +MultiViews
@@ -35,7 +35,7 @@ You can also add other php versions that are needed, follow the steps below.
         Require all granted
         </Files>
        </Directory>
-      #END RUNNING MULTIPLE PHP
+      
 
 4. Edit httpd-vhost.conf add Unset envirotment PHP for running another PHP version in single server
       <VirtualHost *:80>
@@ -61,8 +61,11 @@ You can also add other php versions that are needed, follow the steps below.
   	127.0.0.1       php7.local
 	  ::1             php7.local
     
-6.Resrtart your Services
+ 6.Resrtart your Services
     httpd.exe -k restart  
+    
+ ![MultiPHP-pict](https://user-images.githubusercontent.com/38546311/106383423-6ad03000-63f8-11eb-9313-808e0241c0cd.PNG)
+
   
 
 
