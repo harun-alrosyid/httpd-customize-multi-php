@@ -14,17 +14,63 @@ Apache HTTP Server versions later than 2.2 will not run on any operating system 
 
 # Run Apache as Service
 First Download this repository or you can get apache from https://www.apachelounge.com/download/
-
+Extract on dir : C:/Program Files/Apache Software Foundation/
 You can install Apache as a Windows NT service as follows from the command prompt at the Apache bin subdirectory:
 httpd.exe -k install
 
 # How to running multiple php
+This example running php 5.6 and php 7.4
+You can also add other php versions that are needed, follow the steps below.
+
+1. Download php from https://windows.php.net/downloads/releases/archives/
+2. Extract on Apache/php/
+3. Edit httpd.conf in last line add ScriptAlias like this :
+      #BEGIN RUNNING MULTIPLE PHP 
+       ScriptAlias /php7.4.9 "${SRVROOT}/php/php7.4.9"
+       <Directory "${SRVROOT}/php/php7.4.9">
+         Options +Indexes +Includes +FollowSymLinks +MultiViews
+          AllowOverride All
+          Require  all granted
+        <Files "php-cgi.exe">
+        Require all granted
+        </Files>
+       </Directory>
+      #END RUNNING MULTIPLE PHP
+
+4. Edit httpd-vhost.conf add Unset envirotment PHP for running another PHP version in single server
+      <VirtualHost *:80>
+          ServerAdmin itsmapp@opusit.com.sg
+          DocumentRoot "${SRVROOT}/htdocs/"
+          ServerName php7.local
+
+        <Directory  "${SRVROOT}/htdocs">
+          Options +Indexes +Includes +FollowSymLinks +MultiViews
+          AllowOverride All
+          Require  all granted
+        </Directory>
+
+              UnsetEnv PHPRC
+          <FilesMatch "\.php$">
+              SetHandler application/x-httpd-php7.4.9
+              Action application/x-httpd-php7.4.9 "/php7.4.9/php-cgi.exe"
+          </FilesMatch>
+
+      </VirtualHost>
+      
+5. Add new DNS on C:\Windows\System32\drivers\etc\.hosts
+  	127.0.0.1       php7.local
+	  ::1             php7.local
+    
+6.Resrtart your Services
+    httpd.exe -k restart  
+  
+
 
 
 # Credit :
-1.httpd.apache.org
-2.www.php.net
-3.Antonius Hasoloan
-4.Giga Iswanto
+-httpd.apache.org
+-www.php.net
+-Antonius Hasoloan
+-Giga Iswanto
 
 
