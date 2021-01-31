@@ -10,12 +10,16 @@ This Respository is the solution to the above problems.
 
 # Operating System Requirements
 The primary Windows platform for running Apache 2.4 is Windows 2000 or later. Always obtain and install the current service pack to avoid operating system bugs.
+
 Apache HTTP Server versions later than 2.2 will not run on any operating system earlier than Windows 2000.
 
 # Run Apache as Service
 First Download this repository or you can get apache from https://www.apachelounge.com/download/
+
 Extract on dir : C:/Program Files/Apache Software Foundation/
+
 You can install Apache as a Windows NT service as follows from the command prompt at the Apache bin subdirectory:
+
 httpd.exe -k install
 
 # How to running multiple php
@@ -38,25 +42,25 @@ You can also add other php versions that are needed, follow the steps below.
       
 
 4. Edit httpd-vhost.conf add Unset envirotment PHP for running another PHP version in single server
-     
-     <VirtualHost *:80>
-          ServerAdmin itsmapp@opusit.com.sg
-          DocumentRoot "${SRVROOT}/htdocs/"
-          ServerName php7.local
+           
+<VirtualHost *:80>
+          
+	  <VirtualHost *:80>
+		  ServerAdmin itsmapp@opusit.com.sg
+		  DocumentRoot "${SRVROOT}/htdocs/"
+		  ServerName php7.local
 
-        <Directory  "${SRVROOT}/htdocs">
-          Options +Indexes +Includes +FollowSymLinks +MultiViews
-          AllowOverride All
-          Require  all granted
-        </Directory>
-
-              UnsetEnv PHPRC
-          <FilesMatch "\.php$">
-              SetHandler application/x-httpd-php7.4.9
-              Action application/x-httpd-php7.4.9 "/php7.4.9/php-cgi.exe"
-          </FilesMatch>
-
-      </VirtualHost>
+		  <Directory  "${SRVROOT}/htdocs">
+		  Options +Indexes +Includes +FollowSymLinks +MultiViews
+		  AllowOverride All
+		  Require  all granted
+		  </Directory>
+		      UnsetEnv PHPRC
+		  <FilesMatch "\.php$">
+		      SetHandler application/x-httpd-php7.4.9
+		      Action application/x-httpd-php7.4.9 "/php7.4.9/php-cgi.exe"
+		  </FilesMatch>
+      	  </VirtualHost>
       
 5. Add new DNS on C:\Windows\System32\drivers\etc\.hosts
 
