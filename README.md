@@ -38,7 +38,8 @@ You can also add other php versions that are needed, follow the steps below.
       
 
 4. Edit httpd-vhost.conf add Unset envirotment PHP for running another PHP version in single server
-      <VirtualHost *:80>
+     
+     <VirtualHost *:80>
           ServerAdmin itsmapp@opusit.com.sg
           DocumentRoot "${SRVROOT}/htdocs/"
           ServerName php7.local
@@ -58,10 +59,14 @@ You can also add other php versions that are needed, follow the steps below.
       </VirtualHost>
       
 5. Add new DNS on C:\Windows\System32\drivers\etc\.hosts
-  	127.0.0.1       php7.local
-	  ::1             php7.local
+
+	127.0.0.1       php7.local
+	
+	::1             php7.local
     
- 6.Resrtart your Services
+      
+6.Restart your Services
+ 
     httpd.exe -k restart  
     
  ![MultiPHP-pict](https://user-images.githubusercontent.com/38546311/106383423-6ad03000-63f8-11eb-9313-808e0241c0cd.PNG)
@@ -72,8 +77,11 @@ You can also add other php versions that are needed, follow the steps below.
 
 # Credit :
 -httpd.apache.org
+
 -www.php.net
+
 -Antonius Hasoloan
+
 -Giga Iswanto
 
 
