@@ -82,10 +82,10 @@ You can also add other php versions that are needed, follow the steps below.
 # Credit :
 - Apache (https://github.com/apache)
 
--www.php.net
+- www.php.net
 
--Antonius Hasoloan
+- Antonius Hasoloan
 
--Giga Iswanto
+- Giga Iswanto
 
 
