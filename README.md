@@ -80,7 +80,7 @@ You can also add other php versions that are needed, follow the steps below.
 
 
 # Credit :
--httpd.apache.org
+- Apache (https://github.com/apache)
 
 -www.php.net
 
